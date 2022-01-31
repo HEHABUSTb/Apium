@@ -13,12 +13,14 @@ desired_caps['appActivity'] = 'com.code2lead.kwad.MainActivity'
 desired_caps["automationName"] = "UiAutomator2"
 
 driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+driver.implicitly_wait(3)
 
-button_enter_some_value = driver.find_element(By.ID, 'com.code2lead.kwad:id/EnterValue')
-button_enter_some_value.click()
+time.sleep(5)
+driver.start_activity('com.android.chrome', 'com.google.android.apps.chrome.Main')
 
-time.sleep(2)
-text_field = driver.find_element(By.CLASS_NAME, 'android.widget.EditText').send_keys('Code2Lead')
+time.sleep(5)
+driver.start_activity('com.code2lead.kwad', 'com.code2lead.kwad.MainActivity')
+time.sleep(5)
 
-time.sleep(2)
 driver.quit()
+ 
