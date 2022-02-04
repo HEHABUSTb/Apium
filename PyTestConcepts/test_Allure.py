@@ -21,6 +21,6 @@ def test_method_d():
     print('This is method D')
 
 
-def allure_step(text):
+def allure_step(text: str):
     with allure.step(text):
         pass
