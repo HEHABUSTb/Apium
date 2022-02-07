@@ -7,7 +7,7 @@ import time
 
 class Driver:
 
-    def getDriverMethod(self):
+    def getDriverMethod(self, timeout=5):
         desired_caps = dict()
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '10'
@@ -21,6 +21,7 @@ class Driver:
         # desired_caps['systemPort'] = systemPort  # Default is 8200 an in range 8200 - 8299
 
         driver = webdriver.Remote('http://127.0.0.1:4723/wd/hub', desired_caps)
+        driver.implicitly_wait(timeout)
 
         return driver
 
