@@ -1,5 +1,6 @@
 import logging
 import time
+import allure
 from appium.webdriver.common.appiumby import By, AppiumBy
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -9,11 +10,16 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+    def allure_step(self, text: str):
+        with allure.step(text):
+            pass
+
     def click_element(self, locator_value, locator_type=By.ID):
         try:
             logging.info(f'Try to click on element by {locator_type} and {locator_value}')
             element = self.driver.find_element(locator_type, locator_value)
             element.click()
+            x = self.driver.ge
 
         except Exception as e:
             logging.info(f"Can't clicked by {locator_type} and {locator_value} raise {e}")
@@ -53,6 +59,7 @@ class BasePage:
 
     def screen_shot(self, screenshot_name='Screenshot'):
         file_name = screenshot_name + "_" + time.strftime("%H_%M_%S") + ".png"
+        self.allure_step(f'Take screenshot with name: {file_name}')
         screenshot_path = 'profile\\' + file_name
 
         try:

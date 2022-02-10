@@ -12,7 +12,8 @@ class Driver:
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '10'
         desired_caps['deviceName'] = 'Pixel_3a_XL'
-        desired_caps['app'] = 'C:\\Users\\a_lyubinskiy\\Downloads\\AndroidDemoApp-main\\Android_Appium_Demo.apk'
+        # desired_caps['app'] = 'C:\\Users\\a_lyubinskiy\\Downloads\\AndroidDemoApp-main\\Android_Appium_Demo.apk'
+        desired_caps['app'] = 'D:\\GIT_Repository\\Android_Appium_Demo.apk'
         desired_caps['appPackage'] = 'com.skill2lead.appiumdemo'
         desired_caps['appActivity'] = 'com.skill2lead.appiumdemo.MainActivity'
         desired_caps["automationName"] = "UiAutomator2"
