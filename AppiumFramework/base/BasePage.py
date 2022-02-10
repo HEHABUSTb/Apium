@@ -43,7 +43,6 @@ class BasePage:
             raise e
 
     def is_displayed(self, locator_value, locator_type=By.ID):
-        logging.info(f"Is displayed by {locator_type} and {locator_value} ?")
         element = self.driver.find_element(locator_type, locator_value)
         if element.is_displayed() is True:
             logging.info(f'Element "{locator_value}" is displayed')
@@ -59,15 +58,13 @@ class BasePage:
         try:
             logging.info(f'Try to save screenshot in {screenshot_path}')
             self.driver.save_screenshot(screenshot_path)
-        except:
+        except Exception as e:
             # I don't know why but statement doesn't work properly
             logging.info(f"Can't take a screenshot raise in {screenshot_path}")
-
-
+            raise e
 
     def send_text(self, text, locator_value, locator_type=By.ID):
         try:
-            logging.info(f"Try to send {text} by {locator_type} and {locator_value}")
             element = self.driver.find_element(locator_type, locator_value)
             element.send_keys(text)
             logging.info(f'Send "{text}" to {locator_value} was successful')
@@ -75,8 +72,3 @@ class BasePage:
         except Exception as e:
             logging.info(f"Can't send text by {locator_type} and {locator_value} raise {e}")
             raise e
-
-
-
-
-

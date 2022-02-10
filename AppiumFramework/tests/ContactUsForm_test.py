@@ -1,26 +1,29 @@
 import logging
 import pytest
 from selenium.webdriver.support.wait import WebDriverWait
-
 from AppiumFramework.base.BasePage import BasePage
 from AppiumFramework.base.DriverClass import Driver, allure_step
 from appium.webdriver.common.appiumby import By, AppiumBy
+from AppiumFramework.pages.ContactUsFormPage import ContactForm
 
 
 @pytest.mark.All
 def test_allure_report():
-    allure_step('Check')
+    allure_step('Contact form test')
     logging.info('Launch App')
     driver = Driver().getDriverMethod()
 
-    base_page = BasePage(driver)
-    base_page.explicitly_wait('com.skill2lead.appiumdemo:id/ContactUs')
+    contact_form = ContactForm(driver)
+    contact_form.click_contact_form()
+    contact_form.verify_contact_page()
 
-    # button_contact_us = base_page.get_element('com.skill2lead.appiumdemo:id/ContactUs').click()
+    contact_form.enter_name('Man')
+    contact_form.enter_email('example@mail.com')
+    contact_form.enter_address('street 93')
+    contact_form.enter_mobile_number('+778782323')
 
-    base_page.click_element('com.skill2lead.appiumdemo:id/ContactUs')
-    base_page.is_displayed('com.skill2lead.appiumdemo:id/Et2')
-    base_page.send_text('Name', 'text("Enter Name")', AppiumBy.ANDROID_UIAUTOMATOR)
-    base_page.screen_shot('Contact_us_form')
+    contact_form.click_submit_button()
+    contact_form.screen_shot('Registration')
+
 
 
