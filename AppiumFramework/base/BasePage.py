@@ -1,6 +1,7 @@
 import logging
 import time
 import allure
+from allure_commons.types import AttachmentType
 from appium.webdriver.common.appiumby import By, AppiumBy
 from selenium.webdriver.support.wait import WebDriverWait
 
@@ -19,7 +20,6 @@ class BasePage:
             logging.info(f'Try to click on element by {locator_type} and {locator_value}')
             element = self.driver.find_element(locator_type, locator_value)
             element.click()
-            x = self.driver.ge
 
         except Exception as e:
             logging.info(f"Can't clicked by {locator_type} and {locator_value} raise {e}")
@@ -63,8 +63,9 @@ class BasePage:
         screenshot_path = 'profile\\' + file_name
 
         try:
-            logging.info(f'Try to save screenshot in {screenshot_path}')
-            self.driver.save_screenshot(screenshot_path)
+            logging.info(f'Try to save screenshot for allure report')
+            allure.attach(self.driver.get_screenshot_as_png(), name=file_name,
+                          attachment_type=AttachmentType.PNG)
         except Exception as e:
             # I don't know why but statement doesn't work properly
             logging.info(f"Can't take a screenshot raise in {screenshot_path}")
