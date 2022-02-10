@@ -13,7 +13,7 @@ class ContactForm(BasePage):
         self.driver = driver
 
     # ID Locators values for ContactUsForm
-    _contact_form_button = 'com.skill2lead.appiumdemo:id/ContactU'
+    _contact_form_button = 'com.skill2lead.appiumdemo:id/ContactUs'
     _page_title_locator = 'text("Contact Us form")'
     _page_title_text = "Contact Us form"
     _enter_name = 'com.skill2lead.appiumdemo:id/Et2'
