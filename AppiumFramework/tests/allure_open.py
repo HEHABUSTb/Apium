@@ -11,4 +11,5 @@ def get_allure_exec():
 
 
 if __name__ == '__main__':
+    subprocess.check_call([get_allure_exec(), 'generate', '-c'])
     subprocess.check_call([get_allure_exec(), 'open'])
