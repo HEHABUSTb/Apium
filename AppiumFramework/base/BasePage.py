@@ -57,6 +57,10 @@ class BasePage:
             logging.info(f"Element with {locator_type} and {locator_value} is not displayed")
             return False
 
+    def key_code_action(self, key):
+        self.allure_step(f'Key code action: {key}')
+        self.driver.press_keycode(key)
+
     def screen_shot(self, screenshot_name='Screenshot'):
         file_name = screenshot_name + "_" + time.strftime("%H_%M_%S") + ".png"
         self.allure_step(f'Take screenshot with name: {file_name}')

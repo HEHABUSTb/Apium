@@ -29,6 +29,3 @@ class ContactFormTest(unittest.TestCase):
 
         self.contact_form.click_submit_button()
         self.contact_form.screen_shot('Registration')
-
-
-
