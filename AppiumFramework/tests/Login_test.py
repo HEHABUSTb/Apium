@@ -9,7 +9,7 @@ from AppiumFramework.pages.LoginPage import LoginPage
 
 @pytest.mark.All
 @pytest.mark.usefixtures('driver')
-class ContactFormTest(unittest.TestCase):
+class LoginPageTest(unittest.TestCase):
 
     @pytest.fixture(autouse=True)
     def class_object(self):
